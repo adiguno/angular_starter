@@ -11,15 +11,7 @@
     </li>
 </ul>
 
-<!-- selected hero's details -->
-<div *ngIf="selectedHero">
-    <h2>{{selectedHero.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedHero.id}}</div>
-    <div>
-        <label>name: 
-            <!-- binds the hero.name to the HTML textbox -->
-            <!-- data can now flow in both directions -->
-            <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-        </label>
-    </div>
-</div>
+<!-- add the child of heroesComponent, 'hero-detail' -->
+<!-- pass the selectedHero for it to display (this is a one way data binding)-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
