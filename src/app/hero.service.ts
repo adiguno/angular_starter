@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Hero} from './hero';
-import { HEROES} from './mock-heroes';
+import { HEROES } from './mock-heroes';
+
+import { Observable, of } from 'rxjs';
+
 
 // marks the class that it participates in 
 // the dependency injection system
@@ -12,9 +15,10 @@ export class HeroService {
   constructor() { }
   
   // get the mock heroes
-  getHeroes(): Hero[] {
-    return HEROES;
+  getHeroes(): Observable<Hero[]> {
+    return of(HEROES); // returns an Observable<Hero[]>
+    // emits a single value, the array of mock heroes
   }
-  
+
 }
 

@@ -40,7 +40,7 @@ export class HeroesComponent implements OnInit {
 
   // retrieve heroes from the service
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
 }
