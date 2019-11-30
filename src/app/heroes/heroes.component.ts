@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
 
 import {HEROES} from '../mock-heroes';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -19,19 +20,27 @@ export class HeroesComponent implements OnInit {
   // };
 
   // get the heroes array
-  heroes = HEROES;
+  heroes: Hero[];
 
   selectedHero: Hero;
   
   
+  // defines a private heroService property
+  // and identifies it as a HeroService injection site
+  constructor(private heroService: HeroService) { }
   
-  constructor() { }
-  
-  ngOnInit() {}
+  ngOnInit() {
+    this.getHeroes();
+  }
 
   // onSelect for the click event
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  // retrieve heroes from the service
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
   }
 
 }
