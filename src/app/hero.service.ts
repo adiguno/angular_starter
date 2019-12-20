@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, ObjectUnsubscribedError } from 'rxjs';
 
 import {Hero} from './hero';
 import { HEROES } from './mock-heroes';
@@ -28,5 +28,10 @@ export class HeroService {
 
   }
 
+  // get hero based on id
+  getHero(id:number): Observable<Hero> {
+    this.messageService.add(`HeroService feteched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
+  }
 }
 
