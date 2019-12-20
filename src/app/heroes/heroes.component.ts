@@ -22,7 +22,7 @@ export class HeroesComponent implements OnInit {
   // get the heroes array
   heroes: Hero[];
 
-  selectedHero: Hero;
+  // selectedHero: Hero;
   
   
   // defines a private heroService property
@@ -33,10 +33,10 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  // onSelect for the click event
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  // // onSelect for the click event
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  // }
 
   // retrieve heroes from the service
   getHeroes(): void {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 // loads the HeroesComponent when navigating to its URL
 // URL: localhost:4200/heroes
@@ -9,7 +10,8 @@ import { DashboardComponent }   from './dashboard/dashboard.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, // redirect default route to dashboard
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'heroes',component: HeroesComponent}
+  { path: 'heroes',component: HeroesComponent},
+  { path: 'detail/:id', component: HeroDetailComponent}
 ];
 
 // gives the Router somewhere to go after the routes have been configured
