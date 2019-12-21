@@ -5,6 +5,9 @@ import {Hero} from './hero';
 import { HEROES } from './mock-heroes';
 import {MessageService} from './message.service';
 
+// HTTP
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 // marks the class that it participates in 
 // the dependency injection system
@@ -13,10 +16,16 @@ import {MessageService} from './message.service';
 })
 export class HeroService {
 
+  // URL to web api
+  private heroesUrl = 'api/heroes';
+
   // Angular injects the singleton MessageSerivice into a property
   // service-in-service
   // injecting a service into another service
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+    ) { }
   
   // get the mock heroes
   getHeroes(): Observable<Hero[]> {
@@ -32,6 +41,11 @@ export class HeroService {
   getHero(id:number): Observable<Hero> {
     this.messageService.add(`HeroService feteched hero id=${id}`);
     return of(HEROES.find(hero => hero.id === id));
+  }
+
+  // wrapper for messageService
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 }
 
